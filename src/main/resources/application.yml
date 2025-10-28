@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: "EdufyGateway"
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: pod-service
+              uri: lb://EdufyPod
+              predicates:
+                - Path=/api/v1/pod/**
+              filters:
+                - StripPrefix=2
+
+            - id: music-service
+              uri: lb://EdufyMusic
+              predicates:
+                - Path=/api/v1/music/**
+              filters:
+                - StripPrefix=2
+
+            - id: video-service
+              uri: lb://EdufyVideo
+              predicates:
+                - Path=/api/v1/video/**
+              filters:
+                - StripPrefix=2
+
+            - id: genre-service
+              uri: lb://EdufyGenre
+              predicates:
+                - Path=/api/v1/genre/**
+              filters:
+                - StripPrefix=2
+
+            - id: creator-service
+              uri: lb://EdufyCreator
+              predicates:
+                - Path=/api/v1/creator/**
+              filters:
+                - StripPrefix=2
+
+            - id: user-service
+              uri: lb://EdufyUser
+              predicates:
+                - Path=/api/v1/user/**
+              filters:
+                - StripPrefix=2
+
+            - id: utility-service
+              uri: lb://EdufyUtility
+              predicates:
+                - Path=/api/v1/utility/**
+              filters:
+                - StripPrefix=2
+
+            - id: thumb-service
+              uri: lb://EdufyThumb
+              predicates:
+                - Path=/api/v1/thumb/**
+              filters:
+                - StripPrefix=2
+
+server:
+  port: 4545
+
