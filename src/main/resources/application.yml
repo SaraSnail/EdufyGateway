@@ -32,7 +32,7 @@ spring:
               predicates:
                 - Path=/api/v1/genre/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=0
 
             - id: creator-service
               uri: lb://EdufyCreator
@@ -46,7 +46,7 @@ spring:
               predicates:
                 - Path=/api/v1/user/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=0
 
             - id: utility-service
               uri: lb://EdufyUtility
@@ -60,7 +60,13 @@ spring:
               predicates:
                 - Path=/api/v1/thumb/**
               filters:
-                - StripPrefix=2
+                - StripPrefix=0
+  security:
+    oauth2:
+          resourceserver:
+            jwt:
+              issuer-uri: http://85.228.198.38:8080/realms/edufy_realm
+              jwk-set-uri: http://85.228.198.38:8080/realms/edufy_realm/protocol/openid-connect/certs
 
 eureka:
   client:
@@ -70,4 +76,5 @@ eureka:
       defaultZone: http://eureka:8761/eureka/
 server:
   port: 4545
+
 
