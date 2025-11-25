@@ -60,7 +60,7 @@ spring:
               predicates:
                 - Path=/api/v1/thumb/**
               filters:
-                - StripPrefix=0
+                - StripPrefix=2   # ED-337-AWS changed strip prefix from 0 -> 2
   security:
     oauth2:
           resourceserver:
