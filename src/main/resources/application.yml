@@ -32,7 +32,7 @@ spring:
               predicates:
                 - Path=/api/v1/genre/**
               filters:
-                - StripPrefix=0
+                - StripPrefix=2   # ED-341-AWS changed strip prefix from 0 -> 2
 
             - id: creator-service
               uri: lb://EdufyCreator
@@ -46,7 +46,7 @@ spring:
               predicates:
                 - Path=/api/v1/user/**
               filters:
-                - StripPrefix=0
+                - StripPrefix=2   # ED-336-AWS changed strip prefix from 0 -> 2
 
             - id: utility-service
               uri: lb://EdufyUtility
