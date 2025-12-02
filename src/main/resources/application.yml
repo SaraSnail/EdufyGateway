@@ -5,76 +5,77 @@ spring:
     gateway:
       server:
         webmvc:
-          routes:
+          routes: # SA
+            # SA
             - id: pod-service
               uri: lb://EdufyPod
               predicates:
                 - Path=/api/v1/pod/**
               filters:
                 - StripPrefix=2
-
+            # SA
             - id: music-service
               uri: lb://EdufyMusic
               predicates:
                 - Path=/api/v1/music/**
               filters:
                 - StripPrefix=2
-
+            # SA
             - id: video-service
               uri: lb://EdufyVideo
               predicates:
                 - Path=/api/v1/video/**
               filters:
                 - StripPrefix=2
-
+            # SA
             - id: genre-service
               uri: lb://EdufyGenre
               predicates:
                 - Path=/api/v1/genre/**
               filters:
                 - StripPrefix=2   # ED-341-AWS changed strip prefix from 0 -> 2
-
+            # SA
             - id: creator-service
               uri: lb://EdufyCreator
               predicates:
                 - Path=/api/v1/creator/**
               filters:
                 - StripPrefix=2
-
+            # SA
             - id: user-service
               uri: lb://EdufyUser
               predicates:
                 - Path=/api/v1/user/**
               filters:
                 - StripPrefix=2   # ED-336-AWS changed strip prefix from 0 -> 2
-
+            # SA
             - id: utility-service
               uri: lb://EdufyUtility
               predicates:
                 - Path=/api/v1/utility/**
               filters:
                 - StripPrefix=2
-
+            # SA
             - id: thumb-service
               uri: lb://EdufyThumb
               predicates:
                 - Path=/api/v1/thumb/**
               filters:
                 - StripPrefix=2   # ED-337-AWS changed strip prefix from 0 -> 2
-  security:
+  security: # SA
     oauth2:
           resourceserver:
             jwt:
               issuer-uri: http://84.218.8.124:8080/realms/edufy_realm #ED-363-AA updated link
               jwk-set-uri: http://84.218.8.124:8080/realms/edufy_realm/protocol/openid-connect/certs #ED-363-AA updated link
 
-eureka:
+eureka: # SA
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://eureka:8761/eureka/
-server:
+server: # SA
   port: 4545
 
 
